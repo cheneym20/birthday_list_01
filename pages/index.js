@@ -1,38 +1,61 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import {useState} from "react";
 
+//Look up next/image for next js image handler.
 
 export default function Home() {
+
+  let birthday_people = [
+    {
+      name: "Michael Cheney",
+      age: 34,
+      image_class: "michael_profile"
+    },
+    {
+      name: "Saia Fonua",
+      age: 26,
+      image_class: "saia_profile"
+    }
+  ]
+
+  const handleClearAll = () => {
+    setNumberOfBirthdays(0);
+  }
+
+  const [person, setPerson] = useState(birthday_people);
+  const [numberOfBirthdays, setNumberOfBirthdays] = useState(birthday_people.length);
+
   return (
     <div className={styles.container}>
 
 
       <main className={styles.main}>
         <div className={styles.title}>
-          2 Birthdays Today
+          {numberOfBirthdays} Birthdays Today
         </div>
 
-        <div className={styles.birthday_list}>
-          <li>
-            <div className={styles.michael_profile}></div>
-            <div className={styles.profile_text}>
-              <b>Michael Cheney</b>
-              <span>Age: 34</span>
-            </div>
+        {birthday_people.map((element) => {
+          console.log(element);
+          return (
+            <div className={styles.birthday_list}>
+              <li>
+                {/* </li>div className={`${styles.element.image_class === "michael_profile" ? "" : "saia_profile"} `}></div> */}
+                <div className={styles.profile_text}>
+                  <b>{element.name}</b>
+                  <span>Age: {element.age}</span>
+                </div>
+              </li>
+              </div>
+            )
+          
+        })}
+          
 
-          </li>
-          <li>
-            <div className={styles.saia_profile}></div>
-            <div className={styles.profile_text}>
-              <b>Siosaia Fonua</b>
-              <span>Age: 26</span>
-            </div>
+        
 
-          </li>
-        </div>
-
-        <div className={styles.clear_btn}>
+        <div className={styles.clear_btn} onClick={handleClearAll}>
           Clear All
         </div>
 
