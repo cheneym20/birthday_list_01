@@ -37,23 +37,24 @@ export default function Home() {
         </div>
 
         {birthday_people.map((element) => {
-          console.log(element);
           return (
             <div className={styles.birthday_list}>
               <li>
-                {/* </li>div className={`${styles.element.image_class === "michael_profile" ? "" : "saia_profile"} `}></div> */}
+                <div
+                  className={`${
+                    element.image_class === "michael_profile"
+                      ? styles.michael_profile
+                      : styles.saia_profile
+                  } `}
+                ></div>
                 <div className={styles.profile_text}>
                   <b>{element.name}</b>
                   <span>Age: {element.age}</span>
                 </div>
               </li>
-              </div>
-            )
-          
+            </div>
+          );
         })}
-          
-
-        
 
         <div className={styles.clear_btn} onClick={handleClearAll}>
           Clear All
