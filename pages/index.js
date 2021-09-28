@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import {useState} from "react";
@@ -11,17 +12,18 @@ export default function Home() {
     {
       name: "Michael Cheney",
       age: 34,
-      image_class: "michael_profile"
+      image_source: "/michael.jpg"
     },
     {
       name: "Saia Fonua",
       age: 26,
-      image_class: "saia_profile"
+      image_source: "/saia.jpg"
     }
   ]
 
   const handleClearAll = () => {
     setNumberOfBirthdays(0);
+    setPerson([]);
   }
 
   const [person, setPerson] = useState(birthday_people);
@@ -36,17 +38,11 @@ export default function Home() {
           {numberOfBirthdays} Birthdays Today
         </div>
 
-        {birthday_people.map((element) => {
+        {person.map((element) => {
           return (
             <div className={styles.birthday_list}>
               <li>
-                <div
-                  className={`${
-                    element.image_class === "michael_profile"
-                      ? styles.michael_profile
-                      : styles.saia_profile
-                  } `}
-                ></div>
+                <Image className={styles.profile_image} src={element.image_source} width={90} height={90} />
                 <div className={styles.profile_text}>
                   <b>{element.name}</b>
                   <span>Age: {element.age}</span>
