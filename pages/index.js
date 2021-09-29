@@ -29,6 +29,7 @@ export default function Home() {
   const [person, setPerson] = useState(birthday_people);
   const [numberOfBirthdays, setNumberOfBirthdays] = useState(birthday_people.length);
 
+  
   return (
     <div className={styles.container}>
 
