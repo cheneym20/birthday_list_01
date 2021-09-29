@@ -5,6 +5,7 @@
     "node": "14.x",
     "npm": "6.x"
   },
+  "cacheDirectories": [".next/cache"],
   "private": true,
   "scripts": {
     "dev": "next dev",
