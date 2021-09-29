@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import {useState} from "react";
@@ -29,7 +28,7 @@ export default function Home() {
   const [person, setPerson] = useState(birthday_people);
   const [numberOfBirthdays, setNumberOfBirthdays] = useState(birthday_people.length);
 
-  
+
   return (
     <div className={styles.container}>
 
